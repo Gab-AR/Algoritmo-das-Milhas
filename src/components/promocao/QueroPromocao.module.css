@@ -1,0 +1,110 @@
+.abrir {
+  justify-self: start;
+  min-height: 60px;
+  padding-inline: 36px;
+  font-size: var(--t3);
+}
+
+.janela {
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(10, 31, 66, 0.4); /* taste-skill-ignore: flutua sobre a página */
+}
+
+.janela[open] {
+  animation: abre 0.35s var(--leve);
+}
+
+.janela::backdrop {
+  background: rgba(10, 31, 66, 0.6);
+}
+
+@keyframes abre {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.conteudo {
+  display: grid;
+  gap: 18px;
+  padding: clamp(20px, 4vw, 32px);
+}
+
+.cabeca {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+}
+
+.cabeca h2 {
+  font-size: var(--t3);
+}
+
+.fechar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -8px -8px 0 0;
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fechar:hover {
+  background: var(--tom);
+}
+
+.resumo {
+  color: var(--soft);
+}
+
+.bloco {
+  display: grid;
+}
+
+.datas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.total strong {
+  white-space: nowrap;
+  font-family: var(--display);
+  font-size: var(--t3);
+  font-variant-numeric: tabular-nums;
+}
+
+.enviar {
+  width: 100%;
+  min-height: 56px;
+}
+
+.nota {
+  text-align: center;
+  font-size: var(--t5);
+  color: var(--soft);
+}
+
+@media (max-width: 860px) {
+  .abrir {
+    width: 100%;
+  }
+}

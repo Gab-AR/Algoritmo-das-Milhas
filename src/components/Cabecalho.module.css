@@ -1,0 +1,109 @@
+.barra {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 76px;
+  background: var(--bg);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--t4);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.logo {
+  width: 54px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+}
+
+.item {
+  text-decoration: none;
+  font-weight: 500;
+  padding-block: 6px;
+  text-decoration: underline 2px transparent;
+  text-underline-offset: 6px;
+  transition: text-decoration-color 0.25s var(--leve), color 0.25s var(--leve);
+}
+
+.item:hover,
+.item:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.acao {
+  min-height: 44px;
+  padding-inline: 20px;
+}
+
+.menu {
+  display: none;
+  position: relative;
+}
+
+.menu summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--display);
+  font-weight: 700;
+  padding: 10px 0 10px 14px;
+}
+
+.menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu nav {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  display: grid;
+  min-width: 230px;
+  padding: 8px 0;
+  background: var(--ink);
+}
+
+.menu nav a {
+  color: var(--branco);
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 17px;
+}
+
+.menu nav a:hover {
+  background: var(--noite);
+}
+
+@media (max-width: 900px) {
+  .nav,
+  .barra .acao {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .barra {
+    min-height: 64px;
+  }
+
+  .logo {
+    width: 44px;
+  }
+}

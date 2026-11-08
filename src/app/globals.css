@@ -1,0 +1,196 @@
+/* Algoritmo das Milhas: cores e fontes da marca, cinco tamanhos de texto, margens iguais. */
+:root {
+  --bg: #f4f7fa;
+  --paper: #ffffff;
+  --tom: #e6edf5;
+  --ink: #0e2a56;
+  --soft: #4a5b75;
+  --ciano: #1e9bcb;
+  --ciano-escuro: #0b6e95;
+  --ouro: #e3ae2e;
+  --ouro-forte: #c9931a;
+  --noite: #0a1f42;
+  --branco: #f4f7fa;
+
+  --display: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
+  --texto: var(--font-dm-sans), "Segoe UI", Arial, sans-serif;
+
+  /* Os cinco tamanhos do site */
+  --t1: clamp(48px, 13vw, 220px);
+  --t2: clamp(34px, 4.6vw, 68px);
+  --t3: clamp(21px, 2.2vw, 32px);
+  --t4: clamp(16px, 1.1vw, 18px);
+  --t5: 14px;
+
+  --margem: clamp(16px, 3vw, 40px);
+  --secao: clamp(96px, 14vw, 200px);
+  --leve: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--texto);
+  font-size: var(--t4);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ciano);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--ouro);
+  color: var(--ink);
+}
+
+.moldura {
+  padding-inline: var(--margem);
+}
+
+.oculto {
+  position: absolute !important;
+  width: 1px;
+  height: 1px; /* taste-skill-ignore: texto só para leitor de tela, não é linha */
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Botão único do site: cantos retos, uma cor de preenchimento. */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ouro);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--t4);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s var(--leve), transform 0.2s var(--leve);
+}
+
+.botao:hover {
+  background: var(--ouro-forte);
+}
+
+.botao:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.botao[data-tom="tinta"] {
+  background: var(--ink);
+  color: var(--branco);
+}
+
+.botao[data-tom="tinta"]:hover {
+  background: var(--ciano-escuro);
+}
+
+.botao[data-tom="papel"] {
+  background: var(--branco);
+  color: var(--ink);
+}
+
+.botao[data-tom="papel"]:hover {
+  background: var(--tom);
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 0.2s var(--leve);
+}
+
+.link:hover {
+  color: var(--ciano-escuro);
+}
+
+/* Entradas: só escondo o que ainda está abaixo da dobra e só com script rodando. */
+.revela [data-revelar]:not(.visivel) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-revelar] {
+  transition: opacity 0.7s var(--leve), transform 0.7s var(--leve);
+  transition-delay: calc(var(--ordem, 0) * 80ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .revela [data-revelar]:not(.visivel) {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

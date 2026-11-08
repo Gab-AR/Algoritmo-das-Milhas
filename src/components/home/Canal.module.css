@@ -1,0 +1,65 @@
+.canal {
+  position: relative;
+  min-height: 90svh;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: end;
+  padding: 0 var(--margem) clamp(48px, 8vw, 104px);
+  overflow: hidden;
+  background: var(--noite);
+  color: var(--branco);
+}
+
+.foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% 50%;
+  filter: brightness(0.62);
+}
+
+.texto {
+  position: relative;
+  grid-column: 7 / 13;
+  display: grid;
+  justify-items: start;
+  gap: 20px;
+}
+
+.texto h2 {
+  font-size: var(--t2);
+}
+
+.texto p {
+  max-width: 40ch;
+}
+
+@media (max-width: 1100px) {
+  .texto {
+    grid-column: 5 / 13;
+  }
+}
+
+@media (max-width: 760px) {
+  .canal {
+    display: block;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .foto {
+    position: relative;
+    height: 70svh;
+  }
+
+  .texto {
+    padding: 40px var(--margem) 56px;
+    background: var(--noite);
+  }
+
+  .texto :global(.botao) {
+    width: 100%;
+  }
+}

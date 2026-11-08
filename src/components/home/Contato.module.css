@@ -1,0 +1,74 @@
+.contato {
+  display: flex;
+  flex-direction: column;
+  min-height: min(100svh, 900px);
+  padding-block: clamp(56px, 8vw, 104px) clamp(28px, 4vw, 48px);
+  background: var(--ink);
+  color: var(--branco);
+}
+
+.topo {
+  display: grid;
+  justify-items: start;
+  gap: 20px;
+  max-width: 640px;
+}
+
+.topo h2 {
+  font-size: var(--t2);
+}
+
+.numero {
+  margin-top: auto;
+  padding-top: 64px;
+  display: grid;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--t1);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  color: var(--branco);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s var(--leve);
+}
+
+.numero span {
+  white-space: nowrap;
+}
+
+.numero span:first-child {
+  color: var(--ciano);
+  transition: color 0.3s var(--leve);
+}
+
+.numero:hover,
+.numero:hover span:first-child {
+  color: var(--ouro);
+}
+
+.cantos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 28px;
+  font-size: var(--t5);
+  color: #c9d4e3;
+}
+
+.cantos a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+.cantos a:hover {
+  color: var(--ouro);
+}
+
+@media (max-width: 1100px) {
+  .contato {
+    min-height: 0;
+  }
+}

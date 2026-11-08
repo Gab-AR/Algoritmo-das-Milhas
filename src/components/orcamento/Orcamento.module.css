@@ -1,0 +1,114 @@
+.orcamento {
+  display: grid;
+  gap: 0;
+}
+
+.abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.aba {
+  flex: 1 1 auto;
+  min-height: 56px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 0;
+  background: var(--tom);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--t4);
+  cursor: pointer;
+  transition: background-color 0.2s var(--leve), color 0.2s var(--leve);
+}
+
+.aba:hover {
+  background: #d6e2ee;
+}
+
+.aba[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--branco);
+}
+
+.form {
+  display: grid;
+  gap: 22px;
+  padding: clamp(20px, 3vw, 36px);
+  background: var(--paper);
+}
+
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.grupo {
+  display: grid;
+}
+
+.incluir {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.incluir legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.incluir div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.incluir label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 20px;
+  background: var(--tom);
+  cursor: pointer;
+  transition: background-color 0.2s var(--leve), color 0.2s var(--leve);
+}
+
+.incluir label[data-marcado="true"] {
+  background: var(--ink);
+  color: var(--branco);
+}
+
+.incluir input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.incluir label:has(input:focus-visible) {
+  outline: 3px solid var(--ciano);
+  outline-offset: 2px;
+}
+
+.enviar {
+  width: 100%;
+  min-height: 60px;
+  font-size: var(--t3);
+}
+
+@media (max-width: 640px) {
+  .aba {
+    flex-basis: calc(50% - 2px);
+  }
+
+  .duas {
+    grid-template-columns: 1fr;
+  }
+}

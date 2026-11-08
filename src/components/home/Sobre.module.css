@@ -1,0 +1,151 @@
+.sobre {
+  padding-block: var(--secao);
+  background: var(--bg);
+}
+
+.sobre h2 {
+  font-size: var(--t2);
+}
+
+.lead {
+  margin-top: 24px;
+  max-width: 34ch;
+  font-size: var(--t3);
+  line-height: 1.3;
+}
+
+.mosaico {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 72px;
+}
+
+.fotoBloco {
+  position: relative;
+  grid-column: 1 / 9;
+  margin: 0;
+}
+
+.foto {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.legenda {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 340px;
+  padding: 20px;
+  background: var(--branco);
+  font-size: var(--t4);
+}
+
+.legenda a {
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+.lado {
+  grid-column: 9 / 13;
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+
+.mapa {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  padding: 24px;
+  background: var(--ciano);
+}
+
+.mapa svg {
+  width: 74%;
+  height: auto;
+}
+
+.estado {
+  fill: var(--ink);
+}
+
+.ponto {
+  fill: var(--ouro);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulsa 2.4s ease-in-out infinite;
+}
+
+@keyframes pulsa {
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+.rotuloMapa {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--t5);
+  color: var(--ink);
+}
+
+.fatos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+  margin: 0;
+}
+
+.fatos dt {
+  font-size: var(--t5);
+  color: var(--soft);
+}
+
+.fatos dd {
+  margin: 2px 0 0;
+  font-size: var(--t5);
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .lead {
+    font-size: var(--t4);
+  }
+
+  .mosaico {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+
+  .fotoBloco,
+  .lado {
+    grid-column: 1;
+  }
+
+  .foto {
+    aspect-ratio: 4 / 3;
+  }
+
+  .legenda {
+    position: static;
+    width: auto;
+    padding: 16px 0 0;
+    background: none;
+  }
+
+  .mapa {
+    aspect-ratio: 3 / 2;
+  }
+
+  .mapa svg {
+    width: auto;
+    height: 86%;
+  }
+}

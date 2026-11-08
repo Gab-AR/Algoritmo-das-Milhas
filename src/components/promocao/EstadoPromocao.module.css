@@ -1,0 +1,35 @@
+.encerrada {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  background: var(--tom);
+}
+
+.aviso {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--t3);
+}
+
+.outras {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.outras a {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--paper);
+  text-decoration: none;
+  transition: background-color 0.2s var(--leve);
+}
+
+.outras a:hover {
+  background: var(--branco);
+  color: var(--ciano-escuro);
+}

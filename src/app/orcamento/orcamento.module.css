@@ -1,0 +1,41 @@
+.pagina {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+  padding-block: clamp(40px, 7vw, 104px) var(--secao);
+}
+
+.cabeca {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 24px;
+}
+
+.cabeca h1 {
+  font-size: var(--t2);
+}
+
+.cabeca p {
+  max-width: 44ch;
+}
+
+.cabeca .lead {
+  font-size: var(--t3);
+  line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+  .pagina {
+    grid-template-columns: 1fr;
+  }
+
+  .cabeca {
+    position: static;
+  }
+
+  .cabeca p {
+    font-size: var(--t4);
+  }
+}

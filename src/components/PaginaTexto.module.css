@@ -1,0 +1,94 @@
+.pagina {
+  padding-block: clamp(40px, 7vw, 104px) var(--secao);
+}
+
+.cabeca {
+  display: grid;
+  gap: 24px;
+  max-width: 980px;
+}
+
+.cabeca h1 {
+  font-size: var(--t2);
+}
+
+.abertura {
+  max-width: 40ch;
+  font-size: var(--t3);
+  line-height: 1.3;
+}
+
+.corpo {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(32px, 6vw, 96px);
+  margin-top: clamp(48px, 7vw, 96px);
+  align-items: start;
+}
+
+.texto {
+  display: grid;
+  gap: 16px;
+  max-width: 64ch;
+}
+
+/* Cada bloco do texto sobe ao abrir a página, um depois do outro. */
+.texto > *,
+.lado {
+  animation: sobe 0.7s var(--leve) both;
+}
+
+.texto > :nth-child(2) { animation-delay: 80ms; }
+.texto > :nth-child(3) { animation-delay: 160ms; }
+.texto > :nth-child(4) { animation-delay: 240ms; }
+.texto > :nth-child(5) { animation-delay: 320ms; }
+.texto > :nth-child(n + 6) { animation-delay: 400ms; }
+.lado { animation-delay: 200ms; }
+
+@keyframes sobe {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.texto h2 {
+  margin-top: 32px;
+  font-size: var(--t3);
+}
+
+.texto h2:first-child {
+  margin-top: 0;
+}
+
+.texto ul,
+.texto ol {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.lado {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  background: var(--ink);
+  color: var(--branco);
+}
+
+.lado h2 {
+  font-size: var(--t3);
+}
+
+@media (max-width: 860px) {
+  .corpo {
+    grid-template-columns: 1fr;
+  }
+
+  .lado {
+    position: static;
+  }
+}

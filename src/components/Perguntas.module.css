@@ -1,0 +1,80 @@
+.secao {
+  padding-block: var(--secao);
+  background: var(--paper);
+}
+
+.titulo {
+  font-size: var(--t2);
+  max-width: 14ch;
+}
+
+.lista {
+  display: grid;
+  gap: 12px;
+  margin-top: 80px;
+  margin-left: 33.333%;
+}
+
+.item {
+  margin-inline: -24px;
+  padding: 14px 24px;
+  transition: background-color 0.25s var(--leve);
+}
+
+.item[open] {
+  background: var(--tom);
+}
+
+.item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: var(--t3);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.item summary::-webkit-details-marker {
+  display: none;
+}
+
+.item summary:hover {
+  color: var(--ciano-escuro);
+}
+
+/* Seta de dois traços que gira ao abrir. */
+.seta {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-right: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  transform: rotate(45deg) translateY(-4px);
+  transition: transform 0.3s var(--leve);
+}
+
+.item[open] .seta {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+.item p {
+  max-width: 52ch;
+  padding-top: 14px;
+}
+
+@media (max-width: 760px) {
+  .lista {
+    margin-left: 0;
+    margin-top: 48px;
+  }
+
+  .item {
+    margin-inline: calc(var(--margem) * -1);
+    padding-inline: var(--margem);
+  }
+}
