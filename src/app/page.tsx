@@ -1,6 +1,5 @@
 import Perguntas from "@/components/Perguntas";
 import Canal from "@/components/home/Canal";
-import ComoFunciona from "@/components/home/ComoFunciona";
 import Contato from "@/components/home/Contato";
 import Hero from "@/components/home/Hero";
 import Painel from "@/components/home/Painel";
@@ -26,7 +25,6 @@ export default function Inicio() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(dadosAgencia) }} />
       <Hero promocoes={promocoes} geradoEm={GERADO_EM} />
       <Painel promocoes={promocoes} geradoEm={GERADO_EM} />
-      <ComoFunciona />
       <Contato />
       <Sobre />
       <Perguntas titulo="Perguntas frequentes" perguntas={PERGUNTAS_PRINCIPAIS} />
