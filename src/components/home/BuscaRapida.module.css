@@ -1,0 +1,75 @@
+.busca {
+  display: grid;
+  gap: 14px;
+  padding: clamp(18px, 2.4vw, 28px);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.titulo {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--t3);
+  letter-spacing: -0.02em;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: 1.3fr 1.3fr 1fr 1fr 0.7fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.pessoas {
+  display: grid;
+  gap: 6px;
+}
+
+.pessoas label {
+  font-weight: 700;
+}
+
+.pessoas select {
+  min-height: 48px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 0;
+  background: var(--tom);
+  cursor: pointer;
+}
+
+.enviar {
+  min-height: 48px;
+}
+
+.mais {
+  font-size: var(--t5);
+  color: var(--soft);
+}
+
+.mais a {
+  color: var(--ciano-escuro);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .campos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .enviar {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .campos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .campos > :nth-child(1),
+  .campos > :nth-child(2) {
+    grid-column: 1 / -1;
+  }
+}

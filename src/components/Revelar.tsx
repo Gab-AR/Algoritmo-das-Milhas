@@ -25,7 +25,7 @@ export default function Revelar() {
           }
         });
       },
-      { rootMargin: "0px 0px -10% 0px" },
+      { rootMargin: "0px 0px 15% 0px" },
     );
     itens.forEach((el) => !el.classList.contains("visivel") && observador.observe(el));
     return () => observador.disconnect();

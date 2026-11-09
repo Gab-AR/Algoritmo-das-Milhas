@@ -24,7 +24,7 @@ export default function Inicio() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(dadosAgencia) }} />
-      <Hero />
+      <Hero promocoes={promocoes} geradoEm={GERADO_EM} />
       <Painel promocoes={promocoes} geradoEm={GERADO_EM} />
       <ComoFunciona />
       <Contato />

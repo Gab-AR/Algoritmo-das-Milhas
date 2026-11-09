@@ -1,75 +1,138 @@
 .hero {
   position: relative;
   display: grid;
-  place-items: center;
   min-height: calc(100svh - 76px);
-  padding: clamp(24px, 6vh, 72px) var(--margem);
   overflow: hidden;
   background: var(--noite);
+  color: var(--branco);
 }
 
-.foto {
+/* Fotos que se revezam: cada uma fica 6 s e cruza com a próxima. */
+.fundos {
   position: absolute;
   inset: 0;
+}
+
+.fundo {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  animation: troca 24s linear infinite both;
+}
+
+.fundo:first-child {
+  opacity: 1;
+}
+
+@keyframes troca {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  29% {
+    opacity: 0;
+  }
+  96% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fundo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 60%;
-  filter: brightness(0.7);
-  animation: deriva 24s ease-in-out infinite alternate;
+  animation: aproxima 24s ease-in-out infinite alternate;
 }
 
-@keyframes deriva {
+@keyframes aproxima {
   from {
-    transform: scale(1.04);
+    transform: scale(1.02);
   }
   to {
-    transform: scale(1.12) translateX(-1.5%);
+    transform: scale(1.1);
   }
 }
 
-/* O cartão é a própria passagem: corpo e canhoto separados por recortes, sem linhas. */
-.bilhete {
-  --recorte: 14px;
-  position: relative;
-  width: min(100%, 880px);
-  display: grid;
-  background: var(--branco);
-  color: var(--ink);
-  animation: chega 0.9s var(--leve) both;
+/* Véu escuro só onde há texto, para ler sobre qualquer foto. */
+.fundos::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(6, 17, 38, 0.82) 0%, rgba(6, 17, 38, 0.55) 45%, rgba(6, 17, 38, 0.2) 100%); /* taste-skill-ignore: véu neutro sob o texto da foto */
 }
 
-@keyframes chega {
+.fundo figcaption {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  right: var(--margem);
+  font-size: var(--t5);
+  color: #dfe7f1;
+}
+
+.conteudo {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: end;
+  gap: 28px;
+  padding-block: clamp(48px, 9vh, 120px) clamp(24px, 4vh, 40px);
+}
+
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 28px 40px;
+}
+
+.chamada {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+  animation: sobe 0.9s var(--leve) both;
+}
+
+.chamada h1 {
+  font-size: var(--t2);
+  color: var(--branco);
+}
+
+.chamada p {
+  max-width: 44ch;
+  font-size: var(--t3);
+  line-height: 1.35;
+}
+
+@keyframes sobe {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(24px);
   }
 }
 
-.corpo {
-  display: grid;
-  gap: 22px;
-  padding: clamp(24px, 3.2vw, 44px);
+.conteudo > form {
+  animation: sobe 0.9s 0.12s var(--leve) both;
 }
 
-.corpo h1 {
-  font-size: var(--t2);
-  max-width: 18ch;
-}
-
-.fatos {
+.confianca {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 28px;
-  font-family: var(--display);
+  gap: 8px 28px;
   font-weight: 700;
-  font-size: var(--t4);
 }
 
-.fatos li::before {
+.confianca li::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -79,76 +142,37 @@
   vertical-align: 2px;
 }
 
-.apoio {
-  max-width: 46ch;
-  font-size: var(--t4);
+.destaque {
+  width: min(100%, 400px);
+  animation: sobe 0.9s 0.24s var(--leve) both;
 }
 
-.canhoto {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-  padding: 18px clamp(24px, 3.2vw, 44px);
-  background: var(--tom);
-}
-
-/* Recortes laterais entre corpo e canhoto, como numa passagem destacável. */
-.canhoto::before,
-.canhoto::after {
-  content: "";
-  position: absolute;
-  top: calc(var(--recorte) * -1);
-  width: calc(var(--recorte) * 2);
-  height: calc(var(--recorte) * 2);
-  border-radius: 50%;
-  background: var(--noite);
-}
-
-.canhoto::before {
-  left: calc(var(--recorte) * -1);
-}
-
-.canhoto::after {
-  right: calc(var(--recorte) * -1);
-}
-
-.canhoto > :last-child {
-  justify-self: end;
-  font-weight: 500;
-}
-
-.credito {
-  font-size: var(--t5);
-  color: var(--soft);
-}
-
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .hero {
-    min-height: calc(100svh - 64px);
-    padding-inline: 16px;
+    min-height: 0;
   }
 
-  .corpo h1 {
-    font-size: var(--t3);
+  .conteudo {
+    padding-top: 56px;
   }
 
-  .fatos {
+  .chamada p {
+    font-size: var(--t4);
+  }
+
+  .confianca {
     display: grid;
   }
 
-  .canhoto {
-    grid-template-columns: 1fr;
-    justify-items: stretch;
-    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fundo,
+  .fundo img {
+    animation: none;
   }
 
-  .canhoto > :last-child {
-    justify-self: center;
-  }
-
-  .credito {
-    order: 3;
+  .fundo:not(:first-child) {
+    display: none;
   }
 }

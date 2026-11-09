@@ -1,0 +1,46 @@
+.destaque {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.3s var(--leve);
+}
+
+.destaque:hover {
+  transform: translateY(-4px);
+}
+
+.foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.texto {
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  padding: 14px 18px;
+  font-size: var(--t5);
+  color: var(--soft);
+}
+
+.rotulo {
+  font-weight: 700;
+  color: var(--ciano-escuro);
+}
+
+.texto strong {
+  font-family: var(--display);
+  font-size: var(--t4);
+  color: var(--ink);
+}
+
+.preco {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--t3);
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
