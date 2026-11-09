@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 type Credito = { file: string; title: string; creator: string | null; license: string; licenseUrl: string | null; page: string };
 
-function creditos(): Credito[] {
-  const arquivo = path.join(process.cwd(), "public/fotos/site/credits.json");
+function creditos(pasta: string): Credito[] {
+  const arquivo = path.join(process.cwd(), "public/fotos", pasta, "credits.json");
   return fs.existsSync(arquivo) ? JSON.parse(fs.readFileSync(arquivo, "utf8")) : [];
 }
 
@@ -21,8 +21,19 @@ export default function Creditos() {
       titulo="Créditos das fotos"
       abertura="As fotos do site vêm de acervos abertos. Obrigado a quem as publicou."
     >
+      <h2>Fotos do site</h2>
+      <Lista itens={creditos("site")} />
+      <h2>Fotos dos destinos</h2>
+      <Lista itens={creditos("destinos")} />
+      <p>Quando uma promoção tem foto própria, o crédito aparece na página dela.</p>
+    </PaginaTexto>
+  );
+}
+
+function Lista({ itens }: { itens: Credito[] }) {
+  return (
       <ul>
-        {creditos().map((c) => (
+        {itens.map((c) => (
           <li key={c.file}>
             <a className="link" href={c.page} target="_blank" rel="noopener">
               {c.title}
@@ -42,7 +53,5 @@ export default function Creditos() {
           </li>
         ))}
       </ul>
-      <p>As fotos das promoções trazem o crédito na própria página de cada uma.</p>
-    </PaginaTexto>
   );
 }

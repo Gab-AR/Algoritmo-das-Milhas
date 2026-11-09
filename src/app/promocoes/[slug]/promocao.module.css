@@ -212,6 +212,10 @@
     margin-inline: calc(var(--margem) * -1);
   }
 
+  .figura figcaption {
+    padding-inline: var(--margem);
+  }
+
   .foto,
   .semFoto {
     aspect-ratio: 16 / 10;

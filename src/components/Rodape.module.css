@@ -1,9 +1,9 @@
 .rodape {
   position: relative;
   overflow: hidden;
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
-  min-height: min(100svh, 960px);
   padding-top: clamp(72px, 10vw, 140px);
   background: var(--ink);
   color: var(--branco);
@@ -66,16 +66,17 @@
   gap: 20px;
 }
 
+/* O nome volta inteiro no fim da página, ocupando a largura exata entre as margens. */
 .nome {
-  margin: 8px 0 0;
+  margin: 24px 0 0;
+  padding-bottom: clamp(16px, 2vw, 32px);
   font-family: var(--display);
   font-weight: 800;
-  font-size: var(--t1);
-  line-height: 0.8;
+  font-size: calc(100cqi / 10.6);
+  line-height: 1;
   letter-spacing: -0.045em;
   white-space: nowrap;
   color: var(--ciano);
-  transform: translateY(22%);
 }
 
 @media (max-width: 1100px) {

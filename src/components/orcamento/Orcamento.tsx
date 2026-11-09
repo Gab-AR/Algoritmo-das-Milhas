@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
+import CampoCidade from "@/components/form/CampoCidade";
 import { Campo, Contador, Escolha, Previa, Texto } from "@/components/form/Campos";
 import { AEROPORTOS } from "@/data/aeroportos";
 import { registrarClique } from "@/lib/cliques";
@@ -143,12 +144,6 @@ export default function Orcamento() {
       </div>
 
       <form id="painel-orcamento" role="tabpanel" aria-labelledby={`aba-${tipo}`} className={s.form} onSubmit={enviar}>
-        <datalist id="cidades">
-          {AEROPORTOS.map((a) => (
-            <option key={a.codigo} value={`${a.cidade} (${a.codigo})`} />
-          ))}
-        </datalist>
-
         {tipo === "passagem" && (
           <Escolha
             rotulo="Viagem"
@@ -163,25 +158,21 @@ export default function Orcamento() {
 
         <div className={s.duas}>
           {(tipo === "passagem" || tipo === "pacote") && (
-            <Campo
+            <CampoCidade
               rotulo="Saindo de"
               ajuda={tipo === "pacote" ? "(opcional)" : undefined}
-              list="cidades"
-              value={origem}
-              onChange={(e) => setOrigem(e.target.value)}
+              valor={origem}
+              onChange={setOrigem}
               placeholder="Cidade ou aeroporto"
               required={tipo === "passagem"}
-              autoComplete="off"
             />
           )}
-          <Campo
+          <CampoCidade
             rotulo={tipo === "passagem" ? "Indo para" : "Destino"}
-            list="cidades"
-            value={destino}
-            onChange={(e) => setDestino(e.target.value)}
+            valor={destino}
+            onChange={setDestino}
             placeholder="Cidade, país ou aeroporto"
             required
-            autoComplete="off"
           />
         </div>
 

@@ -5,6 +5,7 @@ import ListaEtapas from "@/components/etapas/ListaEtapas";
 import EstadoPromocao from "@/components/promocao/EstadoPromocao";
 import QueroPromocao from "@/components/promocao/QueroPromocao";
 import { promocao, todasPromocoes } from "@/lib/conteudo";
+import { fotoDaPromocao } from "@/lib/fotos";
 import {
   aeroporto,
   bagagemTexto,
@@ -36,7 +37,11 @@ export async function generateMetadata({ params }: PageProps<"/promocoes/[slug]"
   return {
     title: `${titulo(p)} por ${reais(p.preco)}`,
     description: descricao,
-    openGraph: { title: `${titulo(p)} por ${reais(p.preco)}`, description: descricao, images: p.foto ? [p.foto] : undefined },
+    openGraph: {
+      title: `${titulo(p)} por ${reais(p.preco)}`,
+      description: descricao,
+      images: fotoDaPromocao(p) ? [fotoDaPromocao(p)!.grande] : undefined,
+    },
   };
 }
 
@@ -45,6 +50,7 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
   const p = promocao(slug);
   if (!p) notFound();
   const outras = todasPromocoes().filter((o) => o.slug !== p.slug);
+  const foto = fotoDaPromocao(p);
 
   const detalhes = [
     { rotulo: "Datas", valor: p.modoDatas === "periodo" ? `Em ${datasTexto(p)}, você escolhe os dias` : datasTexto(p) },
@@ -73,9 +79,9 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
           </p>
         </div>
         <figure className={s.figura} data-revelar style={ordem(2)}>
-          {p.foto ? (
-            // eslint-disable-next-line @next/next/no-img-element -- foto enviada pelo painel, já no tamanho certo
-            <img src={p.foto} alt={`${cidade(p.destino)}`} width={1200} height={1500} className={s.foto} />
+          {foto ? (
+            // eslint-disable-next-line @next/next/no-img-element -- site estático: foto já no tamanho certo
+            <img src={foto.grande} alt={`Foto de ${cidade(p.destino)}`} width={1200} height={900} className={s.foto} />
           ) : (
             <div className={s.semFoto} aria-hidden="true">
               <Foto nome="janela-aviao" alt="" className={s.fundo} tamanhos="(max-width: 860px) 100vw, 40vw" />
@@ -86,7 +92,7 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
               </span>
             </div>
           )}
-          {p.fotoCredito && <figcaption>{p.fotoCredito}</figcaption>}
+          {foto?.credito && <figcaption>{foto.credito}</figcaption>}
         </figure>
       </div>
 

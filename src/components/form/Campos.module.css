@@ -165,3 +165,36 @@
   font-size: var(--t4);
   line-height: 1.5;
 }
+
+/* Sugestões de cidade: lista colada embaixo do campo. */
+.cidade {
+  position: relative;
+}
+
+.sugestoes {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 4px 0 0;
+  padding: 6px 0;
+  list-style: none;
+  background: var(--paper);
+  box-shadow: 0 16px 36px rgba(10, 31, 66, 0.22); /* taste-skill-ignore: lista que flutua sobre o formulário */
+}
+
+.sugestoes li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.sugestoes li[aria-selected="true"] {
+  background: var(--tom);
+}

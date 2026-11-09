@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
+import CartaoPromocao from "./CartaoPromocao";
 import { ordem } from "@/lib/estilo";
 import { useAgora } from "@/lib/relogio";
 import {
   cidade,
-  datasCurtas,
   internacional,
   mesReferencia,
   mesTexto,
   noAr,
-  reais,
   type Promocao,
 } from "@/lib/promocao";
 import { INSTAGRAM_URL, SITE } from "@/lib/site";
@@ -91,28 +90,13 @@ export default function Painel({ promocoes, geradoEm }: Props) {
 
       {grupos.length > 0 ? (
         grupos.map((g) => (
-          <div key={g.origem} className={s.grupo}>
-            <h3 className={s.saida}>
-              Saindo de {cidade(g.origem)} ({g.origem})
-            </h3>
-            <ul className={s.linhas}>
-              {g.itens.map((p) => (
-                <li key={p.slug}>
-                  <Link href={`/promocoes/${p.slug}/`} className={s.linha}>
-                    <span className={s.destino}>
-                      {cidade(p.destino)} <span className={s.codigo}>{p.destino}</span>
-                    </span>
-                    <span className={s.datas}>{datasCurtas(p)}</span>
-                    <span className={s.cia}>{p.companhia}</span>
-                    <span className={s.preco}>
-                      {p.modoDatas === "periodo" && "desde "}
-                      {reais(p.preco)}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Trilho key={g.origem} titulo={`Saindo de ${cidade(g.origem)} (${g.origem})`} quantos={g.itens.length}>
+            {g.itens.map((p) => (
+              <li key={p.slug} className={s.item}>
+                <CartaoPromocao promocao={p} />
+              </li>
+            ))}
+          </Trilho>
         ))
       ) : (
         <div className={s.vazio}>
@@ -133,5 +117,32 @@ export default function Painel({ promocoes, geradoEm }: Props) {
         </div>
       )}
     </section>
+  );
+}
+
+/** Uma fileira de cartões por cidade de saída, que desliza para o lado; as setas aparecem no computador. */
+function Trilho({ titulo, quantos, children }: { titulo: string; quantos: number; children: ReactNode }) {
+  const trilho = useRef<HTMLUListElement>(null);
+  const andar = (sentido: number) => {
+    const el = trilho.current;
+    if (el) el.scrollBy({ left: sentido * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+  return (
+    <div className={s.grupo}>
+      <div className={s.grupoCabeca}>
+        <h3 className={s.saida}>{titulo}</h3>
+        <div className={s.setas} hidden={quantos <= 3}>
+          <button type="button" onClick={() => andar(-1)} aria-label="Promoções anteriores">
+            ←
+          </button>
+          <button type="button" onClick={() => andar(1)} aria-label="Mais promoções">
+            →
+          </button>
+        </div>
+      </div>
+      <ul ref={trilho} className={s.trilho}>
+        {children}
+      </ul>
+    </div>
   );
 }

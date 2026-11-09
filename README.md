@@ -61,20 +61,41 @@ PROMOS_DIR=dev/promocoes
 
 `npm run build` gera o site estático na pasta `out/`.
 
+## Painel de promoções
+
+O endereço `/admin/` abre um painel ([Sveltia CMS](https://sveltiacms.app)) que funciona no celular. Cada promoção salva lá vira um commit neste repositório, e a Cloudflare publica a nova versão do site em 1 a 3 minutos.
+
+- **Entrar:** "Sign In Using Access Token". A própria tela leva ao GitHub para criar um token com a permissão certa (acesso de leitura e escrita ao conteúdo deste repositório). O token fica salvo só naquele navegador.
+- **Publicar:** Promoções → New, preencha os campos e salve. Sem foto, o site usa a foto padrão do destino.
+- **Esgotou:** abra a promoção, marque "Esgotou" e salve. Ela sai da vitrine, e a página avisa que acabou.
+
+Os campos do painel são gerados a partir de `src/data/aeroportos.ts` em `src/app/admin/config.yml/route.ts`.
+
+## Colocar no ar (Cloudflare)
+
+O site roda como um Worker com arquivos estáticos (`wrangler.jsonc`). O worker em `worker/index.mjs` só atende `/api/clique`, que conta os cliques nos botões de compra numa tabela D1 (`migrations/`), sem guardar nada sobre o visitante.
+
+1. Criar a conta grátis na Cloudflare e, em **Workers & Pages → Create → Import a repository**, escolher este repositório.
+2. Comando de build: `npm run build`. Comando de deploy: `npx wrangler deploy`.
+3. Criar o banco de cliques: `npx wrangler d1 create algoritmo-cliques`, colar o `database_id` em `wrangler.jsonc` e rodar `npx wrangler d1 migrations apply algoritmo-cliques --remote`.
+4. Ligar o domínio `algoritmodasmilhas.com` em **Settings → Domains & Routes** do worker.
+
 ## Estrutura
 
 ```
-src/app/            páginas (início, promoção, orçamento, institucionais)
-src/components/     seções e componentes de cada página
-src/data/           aeroportos, companhias, perguntas frequentes e etapas da compra
-src/lib/            regras do site, formatação das promoções e mensagens do WhatsApp
-content/promocoes/  uma promoção por arquivo JSON
-public/fotos/site/  fotos do site e seus créditos (credits.json)
+src/app/               páginas (início, promoção, orçamento, institucionais) e a configuração do painel
+src/components/        seções e componentes de cada página
+src/data/              aeroportos, companhias, fotos dos destinos, perguntas frequentes e etapas da compra
+src/lib/               regras do site, formatação das promoções e mensagens do WhatsApp
+content/promocoes/     uma promoção por arquivo JSON
+public/admin/          página do painel /admin
+public/fotos/          fotos do site, dos destinos e das promoções, com os créditos (credits.json)
+worker/, migrations/   contagem de cliques na Cloudflare
 ```
 
 ## Fotos
 
-As fotos do site vêm do Wikimedia Commons, em domínio público ou licenças Creative Commons. Autores e licenças estão em `public/fotos/site/credits.json` e na página Créditos das fotos do site.
+As fotos do site e dos destinos vêm do Wikimedia Commons, em domínio público ou licenças Creative Commons. Autores e licenças estão nos arquivos `credits.json` de cada pasta em `public/fotos/` e na página Créditos das fotos do site.
 
 ## Direitos
 

@@ -23,7 +23,7 @@
   --t5: 14px;
 
   --margem: clamp(16px, 3vw, 40px);
-  --secao: clamp(96px, 14vw, 200px);
+  --secao: clamp(80px, 10vw, 150px);
   --leve: cubic-bezier(0.22, 1, 0.36, 1);
 
   color-scheme: light;
