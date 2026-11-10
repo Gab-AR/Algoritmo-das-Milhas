@@ -45,7 +45,7 @@ export default function Rodape() {
       </div>
       <div className={s.legal}>
         <span>
-          © {ano} {SITE.nome} · {SITE.cidade} · Atendimento de {SITE.atendimento}
+          © {ano} {SITE.nome} · CNPJ {SITE.cnpj} · {SITE.cidade} · Atendimento de {SITE.atendimento}
         </span>
         <span className={s.legalLinks}>
           <Link href="/termos/">Termos</Link>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "A Algoritmo das Milhas é uma agência de viagens de Teresina-PI que atende o Brasil e o exterior pelo WhatsApp.",
 };
 
-// A foto e a história de quem atende entram aqui quando o dono enviar (pendência registrada no Notion).
+// A história de quem atende entra aqui quando o dono enviar (pendência registrada no Notion).
 export default function QuemSomos() {
   return (
     <PaginaTexto
@@ -19,6 +19,17 @@ export default function QuemSomos() {
       abertura="Uma agência de viagens de Teresina que procura passagens em promoção e cuida da emissão para você."
       lado={<ChamadaWhatsApp />}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element -- site estático: foto já no tamanho certo */}
+      <img
+        src="/fotos/site/fundador.jpg"
+        alt="Fundador da Algoritmo das Milhas em viagem"
+        width={900}
+        height={1200}
+        className={s.retrato}
+      />
+      <p>
+        A Algoritmo das Milhas é registrada no CNPJ {SITE.cnpj}.
+      </p>
       <Foto
         nome="ponte-estaiada-aerea"
         alt="Vista aérea da Ponte Estaiada e do rio Poti, em Teresina"

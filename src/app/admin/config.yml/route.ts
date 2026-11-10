@@ -21,8 +21,8 @@ const aeroportos = AEROPORTOS.map((a) => ({
 
 const config = {
   backend: { name: "github", repo: "Gab-AR/Algoritmo-das-Milhas", branch: "main" },
-  site_url: "https://algoritmodasmilhas.com",
-  display_url: "https://algoritmodasmilhas.com",
+  site_url: "https://algoritmodasmilhas.com.br",
+  display_url: "https://algoritmodasmilhas.com.br",
   logo: { src: "/marca/logo.png" },
   media_folder: "public/fotos/promocoes",
   public_folder: "/fotos/promocoes",

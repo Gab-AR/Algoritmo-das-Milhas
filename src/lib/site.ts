@@ -1,8 +1,9 @@
 // Dados públicos da agência. Nada aqui é interno: custos e milheiros nunca entram no repositório.
 export const SITE = {
   nome: "Algoritmo das Milhas",
-  url: "https://algoritmodasmilhas.com",
+  url: "https://algoritmodasmilhas.com.br",
   cidade: "Teresina-PI",
+  cnpj: "70.044.651/0001-69",
   whatsapp: "5586988385498",
   whatsappVisivel: "(86) 98838-5498",
   instagram: "algoritmodasmilhas",

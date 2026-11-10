@@ -78,7 +78,7 @@ O site roda como um Worker com arquivos estáticos (`wrangler.jsonc`). O worker 
 1. Criar a conta grátis na Cloudflare e, em **Workers & Pages → Create → Import a repository**, escolher este repositório.
 2. Comando de build: `npm run build`. Comando de deploy: `npx wrangler deploy`.
 3. Criar o banco de cliques: `npx wrangler d1 create algoritmo-cliques`, colar o `database_id` em `wrangler.jsonc` e rodar `npx wrangler d1 migrations apply algoritmo-cliques --remote`.
-4. Ligar o domínio `algoritmodasmilhas.com` em **Settings → Domains & Routes** do worker.
+4. Ligar o domínio `algoritmodasmilhas.com.br` em **Settings → Domains & Routes** do worker.
 
 ## Estrutura
 

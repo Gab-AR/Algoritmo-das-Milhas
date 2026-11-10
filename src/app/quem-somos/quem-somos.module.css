@@ -4,3 +4,9 @@
   object-fit: cover;
   margin-bottom: 16px;
 }
+
+.retrato {
+  width: min(100%, 420px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}

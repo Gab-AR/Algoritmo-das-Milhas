@@ -16,6 +16,7 @@ export default function Inicio() {
     name: SITE.nome,
     url: SITE.url,
     telephone: "+55 86 98838-5498",
+    taxID: SITE.cnpj,
     address: { "@type": "PostalAddress", addressLocality: "Teresina", addressRegion: "PI", addressCountry: "BR" },
     areaServed: ["BR", "Mundo"],
     sameAs: [`https://www.instagram.com/${SITE.instagram}/`],

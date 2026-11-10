@@ -52,7 +52,7 @@ export default function Termos() {
 
       <h2>Contato</h2>
       <p>
-        {SITE.nome}, {SITE.cidade}. WhatsApp {SITE.whatsappVisivel}, de {SITE.atendimento}.
+        {SITE.nome}, CNPJ {SITE.cnpj}, {SITE.cidade}. WhatsApp {SITE.whatsappVisivel}, de {SITE.atendimento}.
       </p>
     </PaginaTexto>
   );
