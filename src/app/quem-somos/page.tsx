@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   description: "A Algoritmo das Milhas é uma agência de viagens de Teresina-PI que atende o Brasil e o exterior pelo WhatsApp.",
 };
 
-// A história de quem atende entra aqui quando o dono enviar (pendência registrada no Notion).
 export default function QuemSomos() {
   return (
     <PaginaTexto
@@ -22,13 +21,24 @@ export default function QuemSomos() {
       {/* eslint-disable-next-line @next/next/no-img-element -- site estático: foto já no tamanho certo */}
       <img
         src="/fotos/site/fundador.jpg"
-        alt="Fundador da Algoritmo das Milhas em viagem"
+        alt="Gabriel Rocha, fundador da Algoritmo das Milhas, em viagem"
         width={900}
         height={1200}
         className={s.retrato}
       />
+      <h2>Quem atende você</h2>
       <p>
-        A Algoritmo das Milhas é registrada no CNPJ {SITE.cnpj}.
+        Eu sou o Gabriel Rocha, fundador da Algoritmo das Milhas. Sou estudante de Computação na Universidade Federal
+        do Piauí e apaixonado por aviação, e trabalho com emissão de passagens desde 2025.
+      </p>
+      <p>
+        O nome da agência junta esses dois lados: a lógica de quem estuda computação, usada para garimpar as melhores
+        tarifas, e o gosto por voar. Cada cliente é atendido por mim, pelo WhatsApp, do primeiro orçamento até o
+        embarque.
+      </p>
+      <p>
+        E a regra é sempre a mesma: você só paga depois de receber a passagem e conferir a reserva no site da companhia
+        aérea. A Algoritmo das Milhas é registrada no CNPJ {SITE.cnpj}.
       </p>
       <Foto
         nome="ponte-estaiada-aerea"
