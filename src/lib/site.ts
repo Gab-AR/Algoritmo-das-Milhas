@@ -4,11 +4,11 @@ export const SITE = {
   url: "https://algoritmodasmilhas.com.br",
   cidade: "Teresina-PI",
   cnpj: "70.044.651/0001-69",
-  whatsapp: "5586988385498",
-  whatsappVisivel: "(86) 98838-5498",
+  whatsapp: "5586995126252",
+  whatsappVisivel: "(86) 99512-6252",
   instagram: "algoritmodasmilhas",
-  // Preencher quando existirem: e-mail no domínio próprio e link do Canal do WhatsApp.
-  email: null as string | null,
+  // Preencher quando existir: link do Canal do WhatsApp.
+  email: "algoritmodasmilhas@gmail.com" as string | null,
   canal: null as string | null,
   atendimento: "segunda a sábado, das 8h às 20h",
   prazoEmissao: "até 2 horas após a confirmação, no horário de atendimento",

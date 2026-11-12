@@ -29,7 +29,12 @@ export default function QuemSomos() {
       <h2>Quem atende você</h2>
       <p>
         Eu sou o Gabriel Rocha, fundador da Algoritmo das Milhas. Sou estudante de Computação na Universidade Federal
-        do Piauí e apaixonado por aviação, e trabalho com emissão de passagens desde 2025.
+        do Piauí e trabalho com emissão de passagens desde 2025.
+      </p>
+      <p>
+        A aviação sempre fez parte dos meus sonhos: eu queria ser piloto de avião. O fascínio cresceu de vez no meu
+        primeiro voo, para São Paulo. Desde então, viajar pelo Brasil e pela Argentina só aumentou a vontade de ajudar
+        mais gente a conhecer novos lugares.
       </p>
       <p>
         O nome da agência junta esses dois lados: a lógica de quem estuda computação, usada para garimpar as melhores
