@@ -11,7 +11,14 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
     "run_worker_first": ["/api/*"]
-  }
-  // Contador de cliques: criar o banco com `npx wrangler d1 create algoritmo-cliques` e acrescentar aqui:
-  // "d1_databases": [{ "binding": "DB", "database_name": "algoritmo-cliques", "database_id": "...", "migrations_dir": "migrations" }]
+  },
+  // Contador de cliques (banco D1 criado no painel da Cloudflare em 11/11/2026)
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "algoritmo-cliques",
+      "database_id": "cd1fb2bb-69a0-4ff1-b5c1-79a0f0850917",
+      "migrations_dir": "migrations"
+    }
+  ]
 }

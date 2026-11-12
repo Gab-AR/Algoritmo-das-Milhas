@@ -32,11 +32,21 @@ async function clique(request, env) {
   if (!TIPOS.has(tipo) || !/^[A-Z0-9-]*$/.test(codigo)) return new Response(null, { status: 400 });
   // Dia no horário de Teresina (UTC-3)
   const dia = new Date(Date.now() - 3 * 3600 * 1000).toISOString().slice(0, 10);
-  await env.DB.prepare(
-    "INSERT INTO cliques (dia, tipo, codigo, total) VALUES (?1, ?2, ?3, 1) " +
-      "ON CONFLICT (dia, tipo, codigo) DO UPDATE SET total = total + 1",
-  )
-    .bind(dia, tipo, codigo)
-    .run();
+  const somar = () =>
+    env.DB.prepare(
+      "INSERT INTO cliques (dia, tipo, codigo, total) VALUES (?1, ?2, ?3, 1) " +
+        "ON CONFLICT (dia, tipo, codigo) DO UPDATE SET total = total + 1",
+    )
+      .bind(dia, tipo, codigo)
+      .run();
+  try {
+    await somar();
+  } catch {
+    // Primeiro clique de todos: a tabela ainda não existe. Cria (igual a migrations/0001) e tenta de novo.
+    await env.DB.exec(
+      "CREATE TABLE IF NOT EXISTS cliques (dia TEXT NOT NULL, tipo TEXT NOT NULL, codigo TEXT NOT NULL, total INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (dia, tipo, codigo))",
+    );
+    await somar();
+  }
   return new Response(null, { status: 204 });
 }
