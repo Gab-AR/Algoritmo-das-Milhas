@@ -1,14 +1,13 @@
 import Foto from "@/components/Foto";
 import { ETAPAS } from "@/data/etapas";
-import { ordem } from "@/lib/estilo";
 import s from "./ListaEtapas.module.css";
 
 /** As etapas em lista, com foto pequena ao lado: usada nas páginas internas. */
 export default function ListaEtapas() {
   return (
     <ol className={s.etapas}>
-      {ETAPAS.map((e, i) => (
-        <li key={e.verbo} data-revelar style={ordem(i)}>
+      {ETAPAS.map((e) => (
+        <li key={e.verbo}>
           <Foto
             nome={e.foto}
             alt={e.alt}

@@ -42,12 +42,21 @@
   margin: 0;
   padding: 0;
   display: grid;
+  /* As quatro linhas dividem as mesmas colunas: títulos e textos ficam alinhados. */
+  grid-template-columns: max-content 1fr auto;
   gap: 8px;
+}
+
+.tipos li {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
 }
 
 .tipos a {
   display: grid;
-  grid-template-columns: minmax(200px, 0.9fr) 2fr auto;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: center;
   gap: 8px 24px;
   padding: 22px 24px;
@@ -86,6 +95,11 @@
 
 @media (max-width: 900px) {
   .contato {
+    grid-template-columns: 1fr;
+  }
+
+  .tipos,
+  .tipos li {
     grid-template-columns: 1fr;
   }
 

@@ -111,10 +111,10 @@
   line-height: 1.35;
 }
 
+/* Entrada única do site: o texto já nasce visível e só assenta no lugar. */
 @keyframes sobe {
   from {
-    opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(14px);
   }
 }
 

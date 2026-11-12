@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Foto from "@/components/Foto";
 import piaui from "@/data/piaui.json";
-import { ordem } from "@/lib/estilo";
 import { SITE } from "@/lib/site";
 import s from "./Sobre.module.css";
 
@@ -15,14 +14,14 @@ const FATOS = [
 export default function Sobre() {
   return (
     <section className={`${s.sobre} moldura`} aria-labelledby="titulo-sobre">
-      <h2 id="titulo-sobre" data-revelar>
+      <h2 id="titulo-sobre">
         De Teresina para o mundo
       </h2>
-      <p className={s.lead} data-revelar style={ordem(1)}>
+      <p className={s.lead}>
         Uma agência de viagens de Teresina: procuramos passagens em promoção e cuidamos da emissão para você.
       </p>
       <div className={s.mosaico}>
-        <figure className={s.fotoBloco} data-revelar style={ordem(2)}>
+        <figure className={s.fotoBloco}>
           <Foto
             nome="ponte-estaiada-aerea"
             alt="Vista aérea da Ponte Estaiada e do rio Poti, em Teresina"
@@ -34,7 +33,7 @@ export default function Sobre() {
             depois de receber a passagem. <Link href="/quem-somos/">Quem somos</Link>
           </figcaption>
         </figure>
-        <div className={s.lado} data-revelar style={ordem(3)}>
+        <div className={s.lado}>
           <div className={s.mapa}>
             <svg viewBox={`-10 -10 ${piaui.w + 20} ${piaui.h + 20}`} role="img" aria-labelledby="mapa-titulo">
               <title id="mapa-titulo">Mapa do Piauí com Teresina marcada</title>

@@ -43,4 +43,5 @@
   font-size: var(--t3);
   color: var(--ink);
   letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }

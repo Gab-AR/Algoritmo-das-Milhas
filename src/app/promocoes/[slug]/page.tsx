@@ -17,7 +17,6 @@ import {
   titulo,
   verificadaTexto,
 } from "@/lib/promocao";
-import { ordem } from "@/lib/estilo";
 import { REGRAS } from "@/lib/site";
 import s from "./promocao.module.css";
 
@@ -63,22 +62,22 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
     <article className={s.pagina}>
       <div className={`${s.topo} moldura`}>
         <div className={s.texto}>
-          <h1 data-revelar>{titulo(p)}</h1>
-          <p className={s.subtitulo} data-revelar style={ordem(1)}>
+          <h1>{titulo(p)}</h1>
+          <p className={s.subtitulo}>
             Passagem {tipoTexto(p).toLowerCase()}, {datasTexto(p)}, {p.companhia}
           </p>
-          <p className={s.preco} data-revelar style={ordem(1)}>
+          <p className={s.preco}>
             {p.modoDatas === "periodo" && <span className={s.pequeno}>a partir de </span>}
             {reais(p.preco)} <span className={s.pequeno}>por pessoa, à vista no PIX</span>
           </p>
           <EstadoPromocao promocao={p} outras={outras}>
             <QueroPromocao promocao={p} internacional={internacional(p)} />
           </EstadoPromocao>
-          <p className={s.verificada} data-revelar style={ordem(3)}>
+          <p className={s.verificada}>
             {verificadaTexto(p.verificadaEm)}. {REGRAS.validade}
           </p>
         </div>
-        <figure className={s.figura} data-revelar style={ordem(2)}>
+        <figure className={s.figura}>
           {foto ? (
             // eslint-disable-next-line @next/next/no-img-element -- site estático: foto já no tamanho certo
             <img src={foto.grande} alt={`Foto de ${cidade(p.destino)}`} width={1200} height={900} className={s.foto} />
@@ -97,10 +96,10 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
       </div>
 
       <section className={`${s.detalhes} moldura`} aria-labelledby="titulo-detalhes">
-        <h2 id="titulo-detalhes" data-revelar>
+        <h2 id="titulo-detalhes">
           O que está incluído
         </h2>
-        <dl data-revelar style={ordem(1)}>
+        <dl>
           {detalhes.map((d) => (
             <div key={d.rotulo}>
               <dt>{d.rotulo}</dt>
@@ -109,11 +108,11 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
           ))}
         </dl>
         {p.observacao && (
-          <p className={s.obs} data-revelar>
+          <p className={s.obs}>
             {p.observacao}
           </p>
         )}
-        <div className={s.regras} data-revelar style={ordem(1)}>
+        <div className={s.regras}>
           <h3>Pagamento</h3>
           <p>{REGRAS.pagamento}</p>
           <h3>Cancelamento</h3>
@@ -124,7 +123,7 @@ export default async function PaginaPromocao({ params }: PageProps<"/promocoes/[
       </section>
 
       <section className={`${s.etapas} moldura`} aria-labelledby="titulo-etapas">
-        <h2 id="titulo-etapas" data-revelar>
+        <h2 id="titulo-etapas">
           Como funciona
         </h2>
         <ListaEtapas />

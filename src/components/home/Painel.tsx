@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import CartaoPromocao from "./CartaoPromocao";
-import { ordem } from "@/lib/estilo";
 import { useAgora } from "@/lib/relogio";
 import {
   cidade,
@@ -44,10 +43,10 @@ export default function Painel({ promocoes, geradoEm }: Props) {
   return (
     <section id="promocoes" className={`${s.painel} moldura`} aria-labelledby="titulo-promocoes">
       <div className={s.cabeca}>
-        <h2 id="titulo-promocoes" data-revelar>
+        <h2 id="titulo-promocoes">
           Promoções no ar
         </h2>
-        <p data-revelar style={ordem(1)}>
+        <p>
           Preço por pessoa, à vista no PIX. As tarifas mudam rápido: confirmamos tudo com você no WhatsApp antes de
           emitir.
         </p>

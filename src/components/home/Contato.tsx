@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ordem } from "@/lib/estilo";
 import { INSTAGRAM_URL, SITE } from "@/lib/site";
 import { linkWhatsApp } from "@/lib/whatsapp";
 import s from "./Contato.module.css";
@@ -16,14 +15,14 @@ export default function Contato() {
   return (
     <section className={`${s.contato} moldura`} aria-labelledby="titulo-contato">
       <div className={s.texto}>
-        <h2 id="titulo-contato" data-revelar>
+        <h2 id="titulo-contato">
           Não achou seu destino?
         </h2>
-        <p data-revelar style={ordem(1)}>
+        <p>
           Conte para onde quer ir e a gente procura a melhor tarifa disponível para você. Respondemos de{" "}
           {SITE.atendimento}.
         </p>
-        <div className={s.acoes} data-revelar style={ordem(2)}>
+        <div className={s.acoes}>
           <Link className="botao" href="/orcamento/">
             Solicitar orçamento
           </Link>
@@ -37,7 +36,7 @@ export default function Contato() {
             Chamar no WhatsApp
           </a>
         </div>
-        <p className={s.contatos} data-revelar style={ordem(3)}>
+        <p className={s.contatos}>
           WhatsApp {SITE.whatsappVisivel} ·{" "}
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener">
             Instagram @{SITE.instagram}
@@ -45,8 +44,8 @@ export default function Contato() {
         </p>
       </div>
       <ul className={s.tipos}>
-        {TIPOS.map((t, i) => (
-          <li key={t.tipo} data-revelar style={ordem(i + 1)}>
+        {TIPOS.map((t) => (
+          <li key={t.tipo}>
             <Link href={`/orcamento/?tipo=${t.tipo}`}>
               <span className={s.tipoTitulo}>{t.titulo}</span>
               <span className={s.tipoTexto}>{t.texto}</span>

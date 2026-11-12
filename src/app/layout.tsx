@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Montserrat } from "next/font/google";
 import Cabecalho from "@/components/Cabecalho";
 import Rodape from "@/components/Rodape";
-import Revelar from "@/components/Revelar";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -39,7 +38,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Cabecalho />
         <main id="conteudo">{children}</main>
         <Rodape />
-        <Revelar />
       </body>
     </html>
   );

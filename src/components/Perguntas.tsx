@@ -8,7 +8,7 @@ export default function Perguntas({ titulo, perguntas, nivel = "h2" }: Props) {
   const Titulo = nivel;
   return (
     <section className={`${s.secao} moldura`} aria-labelledby="titulo-perguntas">
-      <Titulo id="titulo-perguntas" className={s.titulo} data-revelar>
+      <Titulo id="titulo-perguntas" className={s.titulo}>
         {titulo}
       </Titulo>
       <div className={s.lista}>

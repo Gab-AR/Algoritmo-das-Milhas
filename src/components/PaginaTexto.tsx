@@ -8,9 +8,9 @@ export default function PaginaTexto({ titulo, abertura, lado, children }: Props)
   return (
     <article className={`${s.pagina} moldura`}>
       <header className={s.cabeca}>
-        <h1 data-revelar>{titulo}</h1>
+        <h1>{titulo}</h1>
         {abertura && (
-          <div className={s.abertura} data-revelar>
+          <div className={s.abertura}>
             {abertura}
           </div>
         )}

@@ -166,25 +166,39 @@ textarea {
   color: var(--ciano-escuro);
 }
 
-/* Entradas: só escondo o que ainda está abaixo da dobra e só com script rodando. */
-.revela [data-revelar]:not(.visivel) {
-  opacity: 0;
-  transform: translateY(24px);
+/* Partes do navegador com as cores da marca: cursor, rolagem, seleções e calendário. */
+html {
+  scrollbar-color: color-mix(in srgb, var(--ink) 45%, transparent) transparent;
+  accent-color: var(--ciano-escuro);
+  caret-color: var(--ciano-escuro);
 }
 
-[data-revelar] {
-  transition: opacity 0.7s var(--leve), transform 0.7s var(--leve);
-  transition-delay: calc(var(--ordem, 0) * 80ms);
+select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230e2a56' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--soft);
+  opacity: 1;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .revela [data-revelar]:not(.visivel) {
-    opacity: 1;
-    transform: none;
   }
 
   *,

@@ -32,7 +32,7 @@
   max-width: 64ch;
 }
 
-/* Cada bloco do texto sobe ao abrir a página, um depois do outro. */
+/* Cada bloco assenta ao abrir a página, um depois do outro; o texto já nasce legível. */
 .texto > *,
 .lado {
   animation: sobe 0.7s var(--leve) both;
@@ -47,8 +47,7 @@
 
 @keyframes sobe {
   from {
-    opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(14px);
   }
 }
 

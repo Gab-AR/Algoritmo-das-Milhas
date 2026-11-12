@@ -1,5 +1,4 @@
 import Foto from "@/components/Foto";
-import { ordem } from "@/lib/estilo";
 import { INSTAGRAM_URL, SITE } from "@/lib/site";
 import s from "./Canal.module.css";
 
@@ -14,14 +13,14 @@ export default function Canal() {
         className={s.foto}
       />
       <div className={s.texto}>
-        <h2 id="titulo-canal" data-revelar>
+        <h2 id="titulo-canal">
           Receba as promoções antes
         </h2>
-        <p data-revelar style={ordem(1)}>
+        <p>
           As tarifas boas duram pouco. {SITE.canal ? "No canal do WhatsApp" : "No Instagram"} você fica sabendo assim
           que uma promoção entra no ar.
         </p>
-        <a className="botao" data-tom="papel" href={link} target="_blank" rel="noopener" data-revelar style={ordem(2)}>
+        <a className="botao" data-tom="papel" href={link} target="_blank" rel="noopener">
           {SITE.canal ? "Entrar no canal" : "Seguir @" + SITE.instagram}
         </a>
       </div>
