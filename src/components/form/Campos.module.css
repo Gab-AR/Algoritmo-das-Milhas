@@ -149,6 +149,13 @@
   resize: vertical;
 }
 
+/* No celular as duas datas dividem a linha: menos recuo para o "dd/mm/aaaa" caber inteiro. */
+@media (max-width: 520px) {
+  .campo input[type="date"] {
+    padding-inline: 10px 8px;
+  }
+}
+
 .previa {
   display: grid;
   gap: 8px;
