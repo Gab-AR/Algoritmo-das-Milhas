@@ -11,6 +11,8 @@ type Props = {
   onChange: (v: string) => void;
   placeholder?: string;
   required?: boolean;
+  /** Sem a lista de aeroportos: para cidades de ônibus, que não têm aeroporto. */
+  semSugestoes?: boolean;
 };
 
 const semAcento = (t: string) =>
@@ -26,7 +28,7 @@ const OPCOES = AEROPORTOS.map((a) => ({
 }));
 
 /** Cidade ou aeroporto com sugestões logo abaixo do campo. Aceita texto livre para destinos fora da lista. */
-export default function CampoCidade({ rotulo, ajuda, valor, onChange, placeholder, required }: Props) {
+export default function CampoCidade({ rotulo, ajuda, valor, onChange, placeholder, required, semSugestoes }: Props) {
   const id = useId();
   const lista = `${id}-lista`;
   const [aberto, setAberto] = useState(false);
@@ -40,7 +42,7 @@ export default function CampoCidade({ rotulo, ajuda, valor, onChange, placeholde
     return [...comeca, ...contem].slice(0, 8);
   }, [valor]);
 
-  const visivel = aberto && sugestoes.length > 0 && !OPCOES.some((o) => o.texto === valor);
+  const visivel = !semSugestoes && aberto && sugestoes.length > 0 && !OPCOES.some((o) => o.texto === valor);
 
   function escolher(texto: string) {
     onChange(texto);
@@ -71,10 +73,10 @@ export default function CampoCidade({ rotulo, ajuda, valor, onChange, placeholde
       </label>
       <input
         id={id}
-        role="combobox"
-        aria-expanded={visivel}
-        aria-controls={lista}
-        aria-autocomplete="list"
+        role={semSugestoes ? undefined : "combobox"}
+        aria-expanded={semSugestoes ? undefined : visivel}
+        aria-controls={semSugestoes ? undefined : lista}
+        aria-autocomplete={semSugestoes ? undefined : "list"}
         aria-activedescendant={visivel ? `${lista}-${ativo}` : undefined}
         autoComplete="off"
         value={valor}

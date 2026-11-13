@@ -16,7 +16,7 @@ export default function Termos() {
     >
       <h2>Sobre o site</h2>
       <p>
-        Este site mostra promoções de passagens aéreas e recebe pedidos de orçamento. A compra não acontece no site: ao
+        Este site mostra promoções de passagens aéreas e recebe pedidos de orçamento de passagens aéreas e de ônibus, hotel, pacote e seguro viagem. A compra não acontece no site: ao
         escolher uma promoção ou pedir um orçamento, você é levado ao WhatsApp {SITE.whatsappVisivel}, onde o
         atendimento continua.
       </p>
@@ -30,7 +30,7 @@ export default function Termos() {
       <h2>Emissão e pagamento</h2>
       <p>
         Com a sua confirmação e os dados dos passageiros, a Algoritmo das Milhas emite a passagem em{" "}
-        {SITE.prazoEmissao} e envia o código da reserva para você conferir no site da companhia aérea.
+        {SITE.prazoEmissao} e envia o código da reserva para você conferir no site da companhia aérea ou da empresa de ônibus.
       </p>
       <p>{REGRAS.pagamento}</p>
 
@@ -44,10 +44,10 @@ export default function Termos() {
         nesses dados podem impedir o embarque e gerar custos de correção cobrados pela companhia aérea.
       </p>
 
-      <h2>Regras da companhia aérea</h2>
+      <h2>Regras da companhia aérea ou da empresa de ônibus</h2>
       <p>
-        Bagagem, marcação de assento, horários e eventuais alterações de voo seguem as regras da companhia aérea que
-        opera o voo.
+        Bagagem, marcação de assento, horários e eventuais alterações de voo seguem as regras da companhia aérea ou da
+        empresa de ônibus que faz a viagem.
       </p>
 
       <h2>Contato</h2>

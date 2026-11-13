@@ -5,12 +5,13 @@ import s from "./Contato.module.css";
 
 const TIPOS = [
   { tipo: "passagem", titulo: "Passagem", texto: "Qualquer origem e destino, com datas exatas ou flexíveis." },
+  { tipo: "onibus", titulo: "Ônibus", texto: "Passagem rodoviária, só de ida ou ida e volta." },
   { tipo: "hotel", titulo: "Hotel", texto: "Destino, datas, quartos e se quer café da manhã." },
   { tipo: "pacote", titulo: "Pacote", texto: "Passagem, hotel, passeios e transfer juntos." },
   { tipo: "seguro", titulo: "Seguro viagem", texto: "Para viagens ao exterior, pela idade de cada viajante." },
 ];
 
-/** Para quem não achou a promoção certa: os quatro tipos de orçamento e o contato direto. */
+/** Para quem não achou a promoção certa: os cinco tipos de orçamento e o contato direto. */
 export default function Contato() {
   return (
     <section className={`${s.contato} moldura`} aria-labelledby="titulo-contato">

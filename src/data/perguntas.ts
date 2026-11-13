@@ -41,9 +41,9 @@ export const PERGUNTAS: Pergunta[] = [
       "Sim. O valor das promoções é por pessoa, à vista no PIX. Ao escolher uma promoção, o site mostra o total estimado para os passageiros que você informar.",
   },
   {
-    pergunta: "Vocês também reservam hotel, pacote e seguro viagem?",
+    pergunta: "Vocês também vendem passagem de ônibus, hotel, pacote e seguro viagem?",
     resposta:
-      "Sim, sob orçamento. Na página Solicitar orçamento você escolhe Hotel, Pacote ou Seguro viagem, preenche o que precisa e a mensagem vai pronta para o nosso WhatsApp.",
+      "Sim, sob orçamento. Na página Solicitar orçamento você escolhe Ônibus, Hotel, Pacote ou Seguro viagem, preenche o que precisa e a mensagem vai pronta para o nosso WhatsApp.",
   },
   {
     pergunta: "Como envio os dados dos passageiros?",

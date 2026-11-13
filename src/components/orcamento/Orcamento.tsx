@@ -10,10 +10,11 @@ import { dataBR } from "@/lib/promocao";
 import { linkWhatsApp, montarMensagem } from "@/lib/whatsapp";
 import s from "./Orcamento.module.css";
 
-type Tipo = "passagem" | "hotel" | "pacote" | "seguro";
+type Tipo = "passagem" | "onibus" | "hotel" | "pacote" | "seguro";
 
 const ABAS: { tipo: Tipo; texto: string }[] = [
   { tipo: "passagem", texto: "Passagem" },
+  { tipo: "onibus", texto: "Ônibus" },
   { tipo: "hotel", texto: "Hotel" },
   { tipo: "pacote", texto: "Pacote" },
   { tipo: "seguro", texto: "Seguro viagem" },
@@ -31,7 +32,7 @@ function nomeCidade(c: string | null): string {
 
 const intervalo = (a: string, b: string) => (a ? `${dataBR(a)}${b ? ` a ${dataBR(b)}` : ""}` : "");
 
-/** Pedido de orçamento em quatro abas. Nada é guardado: o formulário só escreve a mensagem do WhatsApp. */
+/** Pedido de orçamento em cinco abas. Nada é guardado: o formulário só escreve a mensagem do WhatsApp. */
 export default function Orcamento() {
   // Aba e rota podem chegar pelo endereço, ex.: /orcamento/?tipo=hotel ou vindo de uma promoção encerrada.
   const q = useSearchParams();
@@ -84,6 +85,16 @@ export default function Orcamento() {
         `Passageiros: ${pessoas}`,
         ...fim,
       ]);
+    if (tipo === "onibus")
+      return montarMensagem([
+        "Olá! Quero um orçamento de passagem de ônibus:",
+        `De: ${origem || "—"}`,
+        `Para: ${destino || "—"}`,
+        trajeto === "ida" ? `Ida: ${ida ? dataBR(ida) : "—"} (só ida)` : `Datas: ${intervalo(ida, volta) || "—"}`,
+        flexivel === "sim" && "Datas flexíveis: sim",
+        `Passageiros: ${pessoas}`,
+        ...fim,
+      ]);
     if (tipo === "hotel")
       return montarMensagem([
         "Olá! Quero um orçamento de hotel:",
@@ -120,7 +131,9 @@ export default function Orcamento() {
     window.open(linkWhatsApp(mensagem), "_blank", "noopener");
   }
 
-  const comVolta = tipo !== "passagem" || trajeto === "idavolta";
+  // Passagem aérea e de ônibus podem ser só de ida; os outros pedidos sempre têm início e fim.
+  const ehViagem = tipo === "passagem" || tipo === "onibus";
+  const comVolta = !ehViagem || trajeto === "idavolta";
   const rotulos =
     tipo === "hotel" ? ["Entrada", "Saída"] : tipo === "seguro" ? ["Início da viagem", "Fim da viagem"] : ["Ida", "Volta"];
 
@@ -144,7 +157,7 @@ export default function Orcamento() {
       </div>
 
       <form id="painel-orcamento" role="tabpanel" aria-labelledby={`aba-${tipo}`} className={s.form} onSubmit={enviar}>
-        {tipo === "passagem" && (
+        {ehViagem && (
           <Escolha
             rotulo="Viagem"
             valor={trajeto}
@@ -157,22 +170,24 @@ export default function Orcamento() {
         )}
 
         <div className={s.duas}>
-          {(tipo === "passagem" || tipo === "pacote") && (
+          {(ehViagem || tipo === "pacote") && (
             <CampoCidade
               rotulo="Saindo de"
               ajuda={tipo === "pacote" ? "(opcional)" : undefined}
               valor={origem}
               onChange={setOrigem}
-              placeholder="Cidade ou aeroporto"
-              required={tipo === "passagem"}
+              placeholder={tipo === "onibus" ? "Cidade" : "Cidade ou aeroporto"}
+              required={ehViagem}
+              semSugestoes={tipo === "onibus"}
             />
           )}
           <CampoCidade
-            rotulo={tipo === "passagem" ? "Indo para" : "Destino"}
+            rotulo={ehViagem ? "Indo para" : "Destino"}
             valor={destino}
             onChange={setDestino}
-            placeholder="Cidade, país ou aeroporto"
+            placeholder={tipo === "onibus" ? "Cidade" : "Cidade, país ou aeroporto"}
             required
+            semSugestoes={tipo === "onibus"}
           />
         </div>
 
@@ -185,12 +200,12 @@ export default function Orcamento() {
               value={volta}
               min={ida || undefined}
               onChange={(e) => setVolta(e.target.value)}
-              required={tipo !== "passagem"}
+              required={!ehViagem}
             />
           )}
         </div>
 
-        {tipo === "passagem" && (
+        {ehViagem && (
           <Escolha
             rotulo="As datas são flexíveis?"
             valor={flexivel}
