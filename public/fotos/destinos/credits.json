@@ -814,5 +814,29 @@
   "credit": "\"Pedra Furada de Jericoacoara - Ceará\" by Rosanetur from Rio de Janeiro, Brazil, CC BY 2.0, via Wikimedia Commons",
   "notes": [],
   "saved": "2026-11-09T13:48:22.391Z"
+ },
+ {
+  "file": "public/fotos/destinos/goiania.jpg",
+  "media": "image",
+  "ref": "commons:81595394",
+  "title": "Goiânia 2019",
+  "creator": "Boaventuravinicius",
+  "creatorUrl": "https://commons.wikimedia.org/wiki/User:Boaventuravinicius",
+  "date": "2019-08-24",
+  "license": "CC BY-SA 3.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/wiki/File:Goi%C3%A2nia_2019.jpg",
+  "via": "Wikimedia Commons",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Goi%C3%A2nia_2019.jpg",
+  "width": 1200,
+  "height": 800,
+  "bytes": 290513,
+  "credit": "\"Goiânia 2019\" by Boaventuravinicius, CC BY-SA 3.0, via Wikimedia Commons",
+  "notes": [
+   "Recortada para 3:2."
+  ],
+  "saved": "2026-11-14T01:01:17.644Z"
  }
 ]

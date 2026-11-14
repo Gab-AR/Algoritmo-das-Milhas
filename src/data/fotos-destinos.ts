@@ -12,6 +12,7 @@ export const FOTOS_DESTINOS: Record<string, { arquivo: string; credito: string }
   "Fernando de Noronha": { arquivo: "fernando-de-noronha", credito: "Tatiane Kátia, CC BY-SA 4.0" },
   "Florianópolis": { arquivo: "florianopolis", credito: "Rodrigo Soldon from Rio de Janeiro, Brazil, CC BY 2.0" },
   "Fortaleza": { arquivo: "fortaleza", credito: "Joao Albuquerque, CC BY-SA 4.0" },
+  "Goiânia": { arquivo: "goiania", credito: "Boaventuravinicius, CC BY-SA 3.0" },
   "Foz do Iguaçu": { arquivo: "foz-do-iguacu", credito: "Pribruder, CC0" },
   "Jericoacoara": { arquivo: "jericoacoara", credito: "Rosanetur from Rio de Janeiro, Brazil, CC BY 2.0" },
   "João Pessoa": { arquivo: "joao-pessoa", credito: "Zelma Brito, CC BY-SA 3.0" },
