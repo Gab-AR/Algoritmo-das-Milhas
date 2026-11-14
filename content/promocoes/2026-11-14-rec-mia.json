@@ -1,0 +1,17 @@
+{
+  "classe": "Econômica",
+  "esgotada": false,
+  "tipo": "idavolta",
+  "modoDatas": "periodo",
+  "verificadaEm": "2026-11-14T01:01",
+  "validaAte": "2026-11-16",
+  "origem": "REC",
+  "destino": "MIA",
+  "companhia": "Copa Airlines",
+  "itemPessoal": true,
+  "mao": false,
+  "despachadas": 2,
+  "periodoInicio": "2027-02-01",
+  "periodoFim": "2027-06-30",
+  "preco": 3217
+}

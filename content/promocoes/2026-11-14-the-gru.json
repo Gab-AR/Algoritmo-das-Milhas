@@ -1,0 +1,18 @@
+{
+  "classe": "Econômica",
+  "esgotada": false,
+  "tipo": "idavolta",
+  "modoDatas": "periodo",
+  "verificadaEm": "2026-11-14T01:01",
+  "validaAte": "2026-11-16",
+  "origem": "THE",
+  "destino": "GRU",
+  "companhia": "Latam",
+  "itemPessoal": true,
+  "mao": true,
+  "maoKg": 10,
+  "despachadas": 0,
+  "periodoInicio": "2027-02-01",
+  "periodoFim": "2027-03-31",
+  "preco": 857
+}
