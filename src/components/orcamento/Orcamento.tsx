@@ -13,7 +13,7 @@ import s from "./Orcamento.module.css";
 type Tipo = "passagem" | "onibus" | "hotel" | "pacote" | "seguro";
 
 const ABAS: { tipo: Tipo; texto: string }[] = [
-  { tipo: "passagem", texto: "Passagem" },
+  { tipo: "passagem", texto: "Aéreo" },
   { tipo: "onibus", texto: "Ônibus" },
   { tipo: "hotel", texto: "Hotel" },
   { tipo: "pacote", texto: "Pacote" },
@@ -77,7 +77,7 @@ export default function Orcamento() {
     const fim = [obs.trim() && `Observações: ${obs.trim()}`];
     if (tipo === "passagem")
       return montarMensagem([
-        "Olá! Quero um orçamento de passagem:",
+        "Olá! Quero um orçamento de passagem aérea:",
         `De: ${origem || "—"}`,
         `Para: ${destino || "—"}`,
         trajeto === "ida" ? `Ida: ${ida ? dataBR(ida) : "—"} (só ida)` : `Datas: ${intervalo(ida, volta) || "—"}`,

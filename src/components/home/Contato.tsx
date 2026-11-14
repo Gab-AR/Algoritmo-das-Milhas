@@ -4,7 +4,7 @@ import { linkWhatsApp } from "@/lib/whatsapp";
 import s from "./Contato.module.css";
 
 const TIPOS = [
-  { tipo: "passagem", titulo: "Passagem", texto: "Qualquer origem e destino, com datas exatas ou flexíveis." },
+  { tipo: "passagem", titulo: "Aéreo", texto: "Passagem de avião, com datas exatas ou flexíveis." },
   { tipo: "onibus", titulo: "Ônibus", texto: "Passagem rodoviária, só de ida ou ida e volta." },
   { tipo: "hotel", titulo: "Hotel", texto: "Destino, datas, quartos e se quer café da manhã." },
   { tipo: "pacote", titulo: "Pacote", texto: "Passagem, hotel, passeios e transfer juntos." },
