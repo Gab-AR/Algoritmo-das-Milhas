@@ -58,6 +58,8 @@ export default function Orcamento() {
   const [incluir, setIncluir] = useState<string[]>(["Passagem aérea", "Hotel"]);
   const [idades, setIdades] = useState("");
   const [obs, setObs] = useState("");
+  const [querHotel, setQuerHotel] = useState<"sim" | "nao">("nao");
+  const [querSeguro, setQuerSeguro] = useState<"sim" | "nao">("nao");
   const hoje = useHoje();
 
   // A volta (ou a saída do hotel, ou o fim do seguro) nunca fica antes da ida: se a ida passar dela, ela é apagada.
@@ -82,6 +84,17 @@ export default function Orcamento() {
     .filter(Boolean)
     .join(", ");
 
+  // Viagem internacional: origem ou destino fora do Brasil, pelos aeroportos da lista.
+  const paisDe = (c: string) => AEROPORTOS.find((a) => c.toUpperCase().includes(`(${a.codigo})`))?.pais;
+  const internacional = tipo === "passagem" && [origem, destino].some((c) => {
+    const p = paisDe(c);
+    return p !== undefined && p !== "Brasil";
+  });
+  const extras = [
+    querHotel === "sim" && "Hospedagem: quero cotar também, nas datas da viagem",
+    internacional && querSeguro === "sim" && "Seguro viagem: quero cotar também",
+  ];
+
   const mensagem = (() => {
     const fim = [obs.trim() && `Observações: ${obs.trim()}`];
     if (tipo === "passagem")
@@ -92,6 +105,7 @@ export default function Orcamento() {
         trajeto === "ida" ? `Ida: ${ida ? dataBR(ida) : "—"} (só ida)` : `Datas: ${intervalo(ida, volta) || "—"}`,
         flexivel === "sim" && "Datas flexíveis: sim",
         `Passageiros: ${pessoas}`,
+        ...extras,
         ...fim,
       ]);
     if (tipo === "onibus")
@@ -102,6 +116,7 @@ export default function Orcamento() {
         trajeto === "ida" ? `Ida: ${ida ? dataBR(ida) : "—"} (só ida)` : `Datas: ${intervalo(ida, volta) || "—"}`,
         flexivel === "sim" && "Datas flexíveis: sim",
         `Passageiros: ${pessoas}`,
+        ...extras,
         ...fim,
       ]);
     if (tipo === "hotel")
@@ -250,6 +265,29 @@ export default function Orcamento() {
               <Contador rotulo="Bebês" ajuda="Até 2 anos" valor={bebes} max={adultos} onChange={setBebes} />
             )}
           </div>
+        )}
+
+        {(tipo === "passagem" || tipo === "onibus") && (
+          <Escolha
+            rotulo="Quer hospedagem também?"
+            valor={querHotel}
+            onChange={setQuerHotel}
+            opcoes={[
+              { valor: "nao", texto: "Não, só a passagem" },
+              { valor: "sim", texto: "Sim, quero cotar" },
+            ]}
+          />
+        )}
+        {internacional && (
+          <Escolha
+            rotulo="Precisa de seguro viagem?"
+            valor={querSeguro}
+            onChange={setQuerSeguro}
+            opcoes={[
+              { valor: "nao", texto: "Não" },
+              { valor: "sim", texto: "Sim, quero cotar" },
+            ]}
+          />
         )}
 
         {tipo === "hotel" && (
