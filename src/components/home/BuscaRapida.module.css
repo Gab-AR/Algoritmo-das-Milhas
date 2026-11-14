@@ -73,3 +73,26 @@
     grid-column: 1 / -1;
   }
 }
+
+/* Extras do pedido: hospedagem e, em viagem internacional, seguro. */
+.extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-weight: 700;
+}
+
+.extras label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  cursor: pointer;
+}
+
+.extras input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+}
