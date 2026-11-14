@@ -606,30 +606,6 @@
   "saved": "2026-11-14T01:11:16.064Z"
  },
  {
-  "file": "public/fotos/destinos/sao-paulo.jpg",
-  "media": "image",
-  "ref": "commons:72379933",
-  "title": "MASP na Avenida Paulista, São Paulo",
-  "creator": "Rafael Wojtyla",
-  "creatorUrl": null,
-  "date": "2018-05-01",
-  "license": "CC BY-SA 4.0",
-  "licenseCode": "by-sa",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "creditRequired": true,
-  "page": "https://commons.wikimedia.org/wiki/File:Museu_de_Arte_de_S%C3%A3o_Paulo_-_MASP,_vista_exterior_com_Avenida_Paulista_no_feriado_ao_centro.jpg",
-  "via": "Wikimedia Commons",
-  "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Museu_de_Arte_de_S%C3%A3o_Paulo_-_MASP%2C_vista_exterior_com_Avenida_Paulista_no_feriado_ao_centro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-  "width": 1200,
-  "height": 800,
-  "bytes": 165659,
-  "credit": "\"MASP na Avenida Paulista, São Paulo\" by Rafael Wojtyla, CC BY-SA 4.0, via Wikimedia Commons",
-  "notes": [
-   "Recortada para 3:2."
-  ],
-  "saved": "2026-11-14T01:16:08.390Z"
- },
- {
   "file": "public/fotos/destinos/aracaju.jpg",
   "media": "image",
   "ref": "commons:131992068",
@@ -868,5 +844,29 @@
    "Recortada para 3:2."
   ],
   "saved": "2026-11-14T01:17:12.217Z"
+ },
+ {
+  "file": "public/fotos/destinos/sao-paulo.jpg",
+  "media": "image",
+  "ref": "commons:37812222",
+  "title": "MASP, São Paulo",
+  "creator": "Wilfredor",
+  "creatorUrl": null,
+  "date": "2015-01-03",
+  "license": "CC0",
+  "licenseCode": "cc0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "creditRequired": false,
+  "page": "https://commons.wikimedia.org/wiki/File:MASP_Brazil.jpg",
+  "via": "Wikimedia Commons",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/MASP_Brazil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "width": 1200,
+  "height": 800,
+  "bytes": 183151,
+  "credit": "\"MASP, São Paulo\" by Wilfredor, CC0, via Wikimedia Commons",
+  "notes": [
+   "Recortada para 3:2."
+  ],
+  "saved": "2026-11-14T01:31:07.513Z"
  }
 ]

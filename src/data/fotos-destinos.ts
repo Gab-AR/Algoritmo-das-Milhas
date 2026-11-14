@@ -36,5 +36,5 @@ export const FOTOS_DESTINOS: Record<string, { arquivo: string; credito: string }
   "Roma": { arquivo: "roma", credito: "Nicholas Hartmann, CC BY-SA 4.0" },
   "Salvador": { arquivo: "salvador", credito: "Matti Blume, CC BY-SA 4.0" },
   "São Luís": { arquivo: "sao-luis", credito: "Denys Mota, CC BY-SA 4.0" },
-  "São Paulo": { arquivo: "sao-paulo", credito: "Rafael Wojtyla, CC BY-SA 4.0" },
+  "São Paulo": { arquivo: "sao-paulo", credito: "Wilfredor, CC0" },
 };
