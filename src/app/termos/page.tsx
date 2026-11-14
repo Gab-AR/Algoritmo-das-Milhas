@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Condições de compra de passagens com a Algoritmo das Milhas: pagamento, emissão, cancelamento e remarcação.",
 };
 
-// Rascunho em revisão jurídica (decisão de 07/11/2026): ajustar aqui quando o advogado responder.
+// Revisados pelo advogado em 13/11/2026.
 export default function Termos() {
   return (
     <PaginaTexto
