@@ -95,11 +95,12 @@ export default function QueroPromocao({ promocao: p, internacional }: Props) {
 
           {periodo && (
             <div className={s.datas}>
-              <CampoData rotulo="Ida" valor={ida} onChange={mudarIda} min={inicio} max={p.periodoFim} />
+              <CampoData rotulo="Ida" valor={ida} outra={p.tipo === "idavolta" ? volta : undefined} onChange={mudarIda} min={inicio} max={p.periodoFim} />
               {p.tipo === "idavolta" && (
                 <CampoData
                   rotulo="Volta"
                   valor={volta}
+                  outra={ida}
                   onChange={setVolta}
                   min={ida || inicio}
                   max={p.periodoFim}

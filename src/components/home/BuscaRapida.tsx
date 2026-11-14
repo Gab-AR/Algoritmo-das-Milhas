@@ -46,11 +46,12 @@ export default function BuscaRapida() {
       <div className={s.campos}>
         <CampoCidade rotulo="Saindo de" valor={origem} onChange={setOrigem} placeholder="Cidade ou aeroporto" required />
         <CampoCidade rotulo="Indo para" valor={destino} onChange={setDestino} placeholder="Cidade, país ou aeroporto" required />
-        <CampoData rotulo="Ida" valor={ida} onChange={mudarIda} min={hoje} avisoMin="Escolha uma data a partir de hoje." required />
+        <CampoData rotulo="Ida" valor={ida} outra={volta} onChange={mudarIda} min={hoje} avisoMin="Escolha uma data a partir de hoje." required />
         <CampoData
           rotulo="Volta"
           ajuda="(opcional)"
           valor={volta}
+          outra={ida}
           onChange={setVolta}
           min={ida || hoje}
           avisoMin={ida ? "A volta não pode ser antes da ida." : "Escolha uma data a partir de hoje."}

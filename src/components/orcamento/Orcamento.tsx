@@ -207,11 +207,12 @@ export default function Orcamento() {
         </div>
 
         <div className={s.duas}>
-          <CampoData rotulo={rotulos[0]} valor={ida} onChange={mudarIda} min={hoje} avisoMin="Escolha uma data a partir de hoje." required />
+          <CampoData rotulo={rotulos[0]} valor={ida} outra={comVolta ? volta : undefined} onChange={mudarIda} min={hoje} avisoMin="Escolha uma data a partir de hoje." required />
           {comVolta && (
             <CampoData
               rotulo={rotulos[1]}
               valor={volta}
+              outra={ida}
               onChange={setVolta}
               min={ida || hoje}
               avisoMin={ida ? avisoVolta : "Escolha uma data a partir de hoje."}
