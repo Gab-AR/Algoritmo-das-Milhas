@@ -105,7 +105,7 @@ const config = {
           auto_now: true,
           hint: "Atualiza sozinho a cada vez que você salva.",
         },
-        data("validaAte", "Fica no ar até", "Depois desse dia a promoção sai da vitrine sozinha. O normal é 3 dias.", true),
+        data("validaAte", "Fica no ar até", "Depois desse dia a promoção some do site para os clientes, mas continua aqui: para reativar, mude esta data; para apagar de vez, use Excluir. O normal é 2 dias.", true),
         {
           name: "esgotada",
           label: "Esgotou",
