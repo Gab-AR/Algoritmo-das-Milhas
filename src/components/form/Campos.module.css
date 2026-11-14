@@ -149,11 +149,69 @@
   resize: vertical;
 }
 
+/* Data digitada, com o botão do calendário dentro do campo. */
+.data {
+  position: relative;
+}
+
+.campo .data input {
+  padding-right: 48px;
+  font-variant-numeric: tabular-nums;
+}
+
+.calendario {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--soft);
+  cursor: pointer;
+  transition: color 0.2s var(--leve);
+}
+
+.calendario:hover {
+  color: var(--ciano-escuro);
+}
+
 /* No celular as duas datas dividem a linha: menos recuo para o "dd/mm/aaaa" caber inteiro. */
 @media (max-width: 520px) {
-  .campo input[type="date"] {
-    padding-inline: 10px 8px;
+  .campo .data input {
+    padding-left: 10px;
+    padding-right: 34px;
   }
+
+  .calendario {
+    width: 34px;
+  }
+}
+
+/* Campo de data do navegador, invisível: só serve para abrir o calendário do aparelho. */
+.seletor {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px; /* taste-skill-ignore: campo invisível que só abre o calendário */
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.campo .data input[aria-invalid="true"] {
+  outline: 2px solid #b42318;
+  outline-offset: 0;
+}
+
+.erro {
+  font-size: var(--t5);
+  font-weight: 700;
+  color: #b42318;
 }
 
 .previa {

@@ -3,10 +3,12 @@
 import { useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import CampoCidade from "@/components/form/CampoCidade";
+import CampoData from "@/components/form/CampoData";
 import { Campo, Contador, Escolha, Previa, Texto } from "@/components/form/Campos";
 import { AEROPORTOS } from "@/data/aeroportos";
 import { registrarClique } from "@/lib/cliques";
 import { dataBR } from "@/lib/promocao";
+import { useHoje } from "@/lib/relogio";
 import { linkWhatsApp, montarMensagem } from "@/lib/whatsapp";
 import s from "./Orcamento.module.css";
 
@@ -56,6 +58,13 @@ export default function Orcamento() {
   const [incluir, setIncluir] = useState<string[]>(["Passagem aérea", "Hotel"]);
   const [idades, setIdades] = useState("");
   const [obs, setObs] = useState("");
+  const hoje = useHoje();
+
+  // A volta (ou a saída do hotel, ou o fim do seguro) nunca fica antes da ida: se a ida passar dela, ela é apagada.
+  function mudarIda(v: string) {
+    setIda(v);
+    if (v && volta && volta < v) setVolta("");
+  }
 
 
   function trocarAba(t: Tipo) {
@@ -136,6 +145,12 @@ export default function Orcamento() {
   const comVolta = !ehViagem || trajeto === "idavolta";
   const rotulos =
     tipo === "hotel" ? ["Entrada", "Saída"] : tipo === "seguro" ? ["Início da viagem", "Fim da viagem"] : ["Ida", "Volta"];
+  const avisoVolta =
+    tipo === "hotel"
+      ? "A saída não pode ser antes da entrada."
+      : tipo === "seguro"
+        ? "O fim da viagem não pode ser antes do início."
+        : "A volta não pode ser antes da ida.";
 
   return (
     <div className={s.orcamento}>
@@ -192,14 +207,14 @@ export default function Orcamento() {
         </div>
 
         <div className={s.duas}>
-          <Campo rotulo={rotulos[0]} type="date" value={ida} onChange={(e) => setIda(e.target.value)} required />
+          <CampoData rotulo={rotulos[0]} valor={ida} onChange={mudarIda} min={hoje} avisoMin="Escolha uma data a partir de hoje." required />
           {comVolta && (
-            <Campo
+            <CampoData
               rotulo={rotulos[1]}
-              type="date"
-              value={volta}
-              min={ida || undefined}
-              onChange={(e) => setVolta(e.target.value)}
+              valor={volta}
+              onChange={setVolta}
+              min={ida || hoje}
+              avisoMin={ida ? avisoVolta : "Escolha uma data a partir de hoje."}
               required={!ehViagem}
             />
           )}

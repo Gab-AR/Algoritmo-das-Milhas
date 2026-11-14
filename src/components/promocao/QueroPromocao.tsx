@@ -1,9 +1,11 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Campo, Contador, Escolha, Previa } from "@/components/form/Campos";
+import CampoData from "@/components/form/CampoData";
+import { Contador, Escolha, Previa } from "@/components/form/Campos";
 import { registrarClique } from "@/lib/cliques";
 import { codigo, cidade, dataBR, datasTexto, reais, tipoTexto, type Promocao } from "@/lib/promocao";
+import { useHoje } from "@/lib/relogio";
 import { linkWhatsApp, montarMensagem } from "@/lib/whatsapp";
 import s from "./QueroPromocao.module.css";
 
@@ -23,6 +25,14 @@ export default function QueroPromocao({ promocao: p, internacional }: Props) {
   const [seguro, setSeguro] = useState<"sim" | "nao">("nao");
 
   const periodo = p.modoDatas === "periodo";
+  const hoje = useHoje();
+  // Dentro do período da promoção e nunca antes de hoje.
+  const inicio = hoje && p.periodoInicio && hoje > p.periodoInicio ? hoje : (p.periodoInicio ?? hoje);
+
+  function mudarIda(v: string) {
+    setIda(v);
+    if (v && volta && volta < v) setVolta("");
+  }
   const pagantes = adultos + criancas;
   const passageiros = [
     plural(adultos, "adulto", "adultos"),
@@ -85,21 +95,15 @@ export default function QueroPromocao({ promocao: p, internacional }: Props) {
 
           {periodo && (
             <div className={s.datas}>
-              <Campo
-                rotulo="Ida"
-                type="date"
-                value={ida}
-                min={p.periodoInicio}
-                max={p.periodoFim}
-                onChange={(e) => setIda(e.target.value)}
-              />
+              <CampoData rotulo="Ida" valor={ida} onChange={mudarIda} min={inicio} max={p.periodoFim} />
               {p.tipo === "idavolta" && (
-                <Campo
+                <CampoData
                   rotulo="Volta"
-                  type="date"
-                  value={volta}
-                  min={ida || p.periodoInicio}
-                  onChange={(e) => setVolta(e.target.value)}
+                  valor={volta}
+                  onChange={setVolta}
+                  min={ida || inicio}
+                  max={p.periodoFim}
+                  avisoMin={ida ? "A volta não pode ser antes da ida." : undefined}
                 />
               )}
             </div>
