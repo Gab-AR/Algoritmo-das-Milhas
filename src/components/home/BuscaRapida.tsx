@@ -19,10 +19,12 @@ export default function BuscaRapida() {
   const [volta, setVolta] = useState("");
   const [pessoas, setPessoas] = useState("1");
   const hoje = useHoje();
+  const [modal, setModal] = useState<"aviao" | "onibus">("aviao");
+  const onibus = modal === "onibus";
   const [hotel, setHotel] = useState(false);
   const [seguro, setSeguro] = useState(false);
   // Internacional: origem ou destino da lista fora do Brasil.
-  const internacional = [origem, destino].some((c) => {
+  const internacional = !onibus && [origem, destino].some((c) => {
     const a = AEROPORTOS.find((x) => c.toUpperCase().includes(`(${x.codigo})`));
     return !!a && a.pais !== "Brasil";
   });
@@ -36,7 +38,7 @@ export default function BuscaRapida() {
   function enviar(e: FormEvent) {
     e.preventDefault();
     const mensagem = montarMensagem([
-      "Olá! Quero uma cotação de passagem:",
+      onibus ? "Olá! Quero uma cotação de passagem de ônibus:" : "Olá! Quero uma cotação de passagem aérea:",
       `De: ${origem || "—"}`,
       `Para: ${destino || "—"}`,
       volta ? `Datas: ${dataBR(ida)} a ${dataBR(volta)}` : `Ida: ${dataBR(ida)} (só ida)`,
@@ -44,18 +46,27 @@ export default function BuscaRapida() {
       hotel && "Hospedagem: quero cotar também, nas datas da viagem",
       internacional && seguro && "Seguro viagem: quero cotar também",
     ]);
-    registrarClique("orcamento", "busca");
+    registrarClique("orcamento", onibus ? "busca-onibus" : "busca");
     window.open(linkWhatsApp(mensagem), "_blank", "noopener");
   }
 
   return (
     <form className={s.busca} onSubmit={enviar} aria-labelledby="titulo-busca">
-      <p id="titulo-busca" className={s.titulo}>
-        Para onde você quer ir?
-      </p>
+      <div className={s.topo}>
+        <p id="titulo-busca" className={s.titulo}>
+          Para onde você quer ir?
+        </p>
+        <div className={s.modal} role="group" aria-label="Transporte">
+          {(["aviao", "onibus"] as const).map((m) => (
+            <button key={m} type="button" aria-pressed={modal === m} onClick={() => setModal(m)}>
+              {m === "aviao" ? "Avião" : "Ônibus"}
+            </button>
+          ))}
+        </div>
+      </div>
       <div className={s.campos}>
-        <CampoCidade rotulo="Saindo de" valor={origem} onChange={setOrigem} placeholder="Cidade ou aeroporto" required />
-        <CampoCidade rotulo="Indo para" valor={destino} onChange={setDestino} placeholder="Cidade, país ou aeroporto" required />
+        <CampoCidade rotulo="Saindo de" valor={origem} onChange={setOrigem} placeholder={onibus ? "Cidade" : "Cidade ou aeroporto"} semSugestoes={onibus} required />
+        <CampoCidade rotulo="Indo para" valor={destino} onChange={setDestino} placeholder={onibus ? "Cidade" : "Cidade, país ou aeroporto"} semSugestoes={onibus} required />
         <CampoData rotulo="Ida" valor={ida} outra={volta} onChange={mudarIda} min={hoje} avisoMin="Escolha uma data a partir de hoje." required />
         <CampoData
           rotulo="Volta"
