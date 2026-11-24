@@ -1,7 +1,7 @@
 {
   "origem": "FOR",
   "destino": "GRU",
-  "companhia": "Gol",
+  "companhia": "Latam",
   "tipo": "idavolta",
   "modoDatas": "periodo",
   "ida": "",
@@ -18,7 +18,7 @@
   "foto": "",
   "fotoCredito": "",
   "observacao": "",
-  "verificadaEm": "2026-11-24T09:29",
+  "verificadaEm": "2026-11-24T09:32",
   "validaAte": "2026-11-26",
   "esgotada": false
 }
